@@ -27,10 +27,7 @@ const Display = (props) => {
                 calculatorList += '- ';
             }
             if (props.operationList[i].value !== '-') {
-                calculatorList += Math.abs(parseFloat(props.operationList[i].value));
-            }
-            if (props.operationList[i].value[props.operationList[i].value.length - 1] === '.') {
-                calculatorList += '.';
+                calculatorList += props.operationList[i].value[0]==='-'?props.operationList.value.subString(1, props.operationList[i].value.length):props.operationList[i].value;
             }
         }
     }
