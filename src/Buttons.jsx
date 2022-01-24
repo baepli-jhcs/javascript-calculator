@@ -3,6 +3,7 @@ import { ADD, MULTIPLY, DIVIDE } from './state/constants';
 import { operationActions } from './state/slices/operation';
 import { mathActions } from './state/slices/math';
 import { bindActionCreators } from '@reduxjs/toolkit';
+import "./Buttons.css";
 let buttonNames = {
     0: 'zero',
     1: 'one',
@@ -20,7 +21,7 @@ const Buttons = (props) => {
     const { addValue, multiplyValue, divideValue, clearValue, setValue } = bindActionCreators(mathActions, dispatch);
     const { clearList, addList, changeList } = bindActionCreators(operationActions, dispatch);
     let numberButtons = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 9; i >=0; i--) {
         numberButtons.push(<button id={buttonNames[i]} onClick={() => {
             if (props.operationList.length === 0) {
                 setValue((props.mainValue === '0' ? '' : props.mainValue) + i);
@@ -32,7 +33,7 @@ const Buttons = (props) => {
         }}>{i}</button>);
     }
     return (
-        <div>
+        <div id="buttons">
             {numberButtons}
             <button id="decimal" onClick={() => {
                 if (props.operationList.length === 0 && props.mainValue.indexOf('.') === -1) {
@@ -57,7 +58,7 @@ const Buttons = (props) => {
                     addList({ type: ADD, value: '-' });
                 } else if (props.operationList[props.operationList.length - 1].value === null) {
                     changeList('-');
-                } else if (props.operationList[props.operationList.length - 1].value !== '-'){
+                } else if (props.operationList[props.operationList.length - 1].value !== '-') {
                     addList({ type: ADD, value: '-' });
                 }
             }}>-</button>
@@ -81,7 +82,7 @@ const Buttons = (props) => {
             }}>A/C</button>
             <button id="equals" onClick={() => {
                 const doMath = (pair) => {
-                    if (pair.value != (null || '-')) {
+                    if (pair.value !== (null || '-')) {
                         switch (pair.type) {
                             case ADD:
                                 addValue(pair.value);

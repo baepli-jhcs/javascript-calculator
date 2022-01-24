@@ -1,4 +1,5 @@
 import { ADD, MULTIPLY, DIVIDE } from './state/constants';
+import "./Display.css";
 const Display = (props) => {
     let calculatorList = props.mainValue;
     for (let i = 0; i < props.operationList.length; i++) {
@@ -27,6 +28,9 @@ const Display = (props) => {
             }
             if (props.operationList[i].value !== '-') {
                 calculatorList += Math.abs(parseFloat(props.operationList[i].value));
+            }
+            if (props.operationList[i].value[props.operationList[i].value.length - 1] === '.') {
+                calculatorList += '.';
             }
         }
     }
