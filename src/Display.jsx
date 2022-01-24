@@ -27,7 +27,7 @@ const Display = (props) => {
                 calculatorList += '- ';
             }
             if (props.operationList[i].value !== '-') {
-                calculatorList += props.operationList[i].value[0]==='-'?props.operationList.value.subString(1, props.operationList[i].value.length):props.operationList[i].value;
+                calculatorList += props.operationList[i].value[0]==='-'?props.operationList.value.substring(1, props.operationList[i].value.length):props.operationList[i].value;
             }
         }
     }

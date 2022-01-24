@@ -41,6 +41,8 @@ const Buttons = (props) => {
                 } else if (props.operationList.length === 0 && props.mainValue.indexOf('.') !== -1) {
                 } else if (props.operationList[props.operationList.length - 1].value !== null && props.operationList[props.operationList.length - 1].value.indexOf(".") === -1) {
                     changeList(props.operationList[props.operationList.length - 1].value + '.');
+                } else if (props.operationList[props.operationList.length - 1].value === null) {
+                    changeList("0.");
                 } else if (props.operationList[props.operationList.length - 1].value.indexOf(".") === -1) {
                     changeList("0.");
                 }
