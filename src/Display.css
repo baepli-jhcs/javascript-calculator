@@ -9,3 +9,8 @@
     justify-content: center;
     height: 100%;
 }
+@media (max-width: 767px) {
+    #display {
+    font-size: 2rem;
+    }
+}
